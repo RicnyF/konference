@@ -22,3 +22,39 @@ class Speaker(models.Model):
     prijmeni = models.CharField(max_length=50, verbose_name="Příjmeni mluvícího", help_text="Zadejte příjmení mluvčiho",
                              error_messages={'blank': 'Příjmení musí být vyplněno'})
     #rodnecislo = models.IntField(max_length=11, unique=True,help_text="Zadejte rodné číslo bez "/" ",validators=[birth_number_validate])
+
+    class Meta:
+        ordering = ['prijmeni', 'jmeno']
+        verbose_name = 'Řečník'
+        verbose_name_plural = 'Řečníci'
+    def __str__(self):
+        return f'{self.prijmeni}, {self.jmeno}'
+
+class Conference(models.Model):
+    nazev = models.CharField(max_length=100, unique=True, verbose_name="Název konference", help_text="Zadejte název konference",
+                             error_messages={'blank': 'Název musí být vyplněn'})
+    lokace =models.CharField(max_length=200, verbose_name="Lokace konference", help_text="Zadejte lokaci konference",
+                             error_messages={'blank': 'Lokace musí být vyplněna'})
+    datum = models.DateField()
+
+    class Meta:
+        ordering = ['nazev']
+        verbose_name = 'Konference'
+        verbose_name_plural = 'Konference'
+    def __str__(self):
+        return self.nazev
+
+class Session(models.Model):
+    nazev = models.CharField(max_length=100, unique=True, verbose_name="Název schůze",
+                             help_text="Zadejte název schůze",
+                             error_messages={'blank': 'Název musí být vyplněn'})
+    cas = models.DateTimeField()
+    speaker = models.ForeignKey(Speaker, on_delete=models.CASCADE)
+    conference = models.ForeignKey(Conference, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['nazev']
+        verbose_name = 'Schůze'
+        verbose_name_plural = 'Schůze'
+    def __str__(self):
+        return self.title
