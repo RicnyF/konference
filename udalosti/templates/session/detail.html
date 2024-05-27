@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail schůze
+{% endblock %}
+
+{% block content %}
+    <h2 class="bg-danger text-light text-center text-uppercase p-3">Detail schůze</h2>
+    <div class="row mt-3">
+
+        <div class="col-lg-8">
+            <h3>Schůze</h3>
+            <div class="row">
+                <div class="col-lg-8 p-3">
+                    <h4>{{ session.nazev }}</h4>
+                    <p>Konference: {{ session.conference.nazev }}</p>
+                    <p>Lokace: {{ session.conference.lokace }}</p>
+                    <p>Datum: <span class="badge-pill badge-danger">{{ session.conference.datum }}</span></p>
+                    <p>Čas: {{ session.cas }}</p>
+                    <p>Typ: {{ session.get_typ_display }}</p>
+
+                    <h5 class="border-top pt-3 text-danger">Popis</h5>
+                    <p>{{ session.description }}</p>
+
+                </div>
+            </div>
+        </div>
+    <div class="col-lg-4">
+            <h3>Mluvčí</h3>
+            <div class="bg-light p-3">
+
+                    <p>Jméno: {{ session.speaker.jmeno }}</p>
+                    <p>Příjmení: {{ session.speaker.prijmeni }}</p>
+                    <p>E-mail: {{ session.speaker.email }}</p>
+                    <p>Telefon: {{ session.speaker.telefon }}</p>
+                        <p> Bydliste: {{ session.speaker.bydliste }}</p>
+
+                    <p> Zivotopis: {{ session.speaker.zivotopis }}</p>
+                <div>
+                    {% if session.speaker.foto %}
+                        <img src="{{ session.speaker.foto.url }}"
+                             alt="Foto {{ session.speaker.jmeno }} {{ session.speaker.prijmeni }}"
+                             style="width: 200px; height: 200px" class="img-fluid">
+                    {% else %}
+                        <p>Fotka není k dispozici.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

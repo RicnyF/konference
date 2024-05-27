@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Konference{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Záhlaví -->
+    <header class=" text-center">
+
+
+    <!-- Navigace -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+        <a class="navbar-brand text-dark" href="{% url 'home' %}">Home</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'session_list' %}">Seznam sezení <span class="sr-only">(current)</span></a>
+                </li>
+                <span class="navbar-text ml-auto display-5 nadpisek">
+            Konferenční web
+        </span>
+            </ul>
+        </div>
+    </nav>
+    </header>
+    <!-- Obsah stránky -->
+    <main class="container pt-5 pb-5  bg-light">
+        {% block content %}{% endblock %}
+    </main>
+    <!-- Zápatí -->
+    <footer class="container-fluid bg-dark p-3">
+        <p class="text-center text-white">&copy; 2024 Filip Říčný</p>
+    </footer>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'bootstrap/jquery-3.3.1.slim.min.js

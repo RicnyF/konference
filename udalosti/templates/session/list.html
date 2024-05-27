@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Seznam schůzí
+{% endblock %}
+
+{% block content %}
+    <h2 class="bg-danger text-light text-center text-uppercase p-3">Seznam schuzí</h2>
+    <div>
+        <table class="table table-bordered table-responsive-lg">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th>Název</th>
+                    <th>Čas</th>
+                    <th>Mluvčí</th>
+                    <th>Konference</th>
+                    <th>Typ</th>
+                    <th>Popis</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in session_list %}
+                <tr>
+                    <td><a class="nav-link" href="{% url 'session_detail' session.pk %}">{{ session.nazev }}<span class="sr-only">(current)</span></a></td>
+                    <td>{{ session.cas }}</td>
+                    <td>{{ session.speaker }}</td>
+                    <td>{{ session.conference }}</td>
+                    <td>{{ session.get_typ_display }}</td>
+                    <td>{{ session.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

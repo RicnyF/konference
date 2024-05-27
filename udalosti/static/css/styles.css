@@ -1,0 +1,22 @@
+.nadpisek{
+    padding: 0 0 0 500px;
+    font-size: 30px;
+}
+.centerko{
+    position: absolute;
+    top:25%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+body{
+    background-image: url("../img/download.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: brightness(30%);
+}
+main {
+    padding-left:100px !important;
+    padding-right: 100px !important;
+
+}
