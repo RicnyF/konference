@@ -13,14 +13,14 @@
             <h3>Mluvčí</h3>
             <div class="bg-light ">
 
-                    <p>Jméno: {{ session.speaker.jmeno }}</p>
-                    <p>Příjmení: {{ session.speaker.prijmeni }}</p>
-                    <p>E-mail: {{ session.speaker.email }}</p>
-                    <p>Telefon: {{ session.speaker.telefon }}</p>
-                        <p> Bydliště: {{ session.speaker.bydliste }}</p>
-
-                    <p> Životopis: {{ session.speaker.zivotopis }}</p>
-                <div>
+                    <p>Jméno: <b>{{ session.speaker.jmeno }}</b></p>
+                    <p>Příjmení: <b>{{ session.speaker.prijmeni }}</b></p>
+                    <p>E-mail: <b>{{ session.speaker.email }}</b></p>
+                    <p>Telefon: <b>{{ session.speaker.telefon }}</b></p>
+                        <p> Bydliště: <b>{{ session.speaker.bydliste }}</b></p>
+                    <h5 class="border-top pt-3 text-danger">Životopis: </h5>
+                    <p> {{ session.speaker.zivotopis }}</p>
+                <div class="text-center">
                     {% if session.speaker.foto %}
                         <img src="{{ session.speaker.foto.url }}"
                              alt="Foto {{ session.speaker.jmeno }} {{ session.speaker.prijmeni }}"
@@ -38,11 +38,11 @@
             <div class="row">
                 <div class="col-lg-8 p-3">
                     <h3>{{ session.nazev }}</h3>
-                    <p>Konference: {{ session.conference.nazev }}</p>
-                    <p>Lokace: {{ session.conference.lokace }}</p>
-                    <p>Datum: <span class="badge-pill badge-danger">{{ session.conference.datum }}</span></p>
-                    <p>Čas: {{ session.cas }}</p>
-                    <p>Typ: {{ session.get_typ_display }}</p>
+                    <p>Konference: <b>{{ session.conference.nazev }}</b></p>
+                    <p>Lokace: <b>{{ session.conference.lokace }}</b></p>
+                    <p>Datum: <b><span class="badge-pill badge-danger">{{ session.conference.datum }}</span></b></p>
+                    <p>Čas: <b>{{ session.cas }}</b></p>
+                    <p>Typ: <b>{{ session.get_typ_display }}</b></p>
 
                     <h5 class="border-top pt-3 text-danger">Popis</h5>
                     <p>{{ session.description }}</p>
